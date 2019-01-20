@@ -1,0 +1,278 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "API DRr",
+		"version": "1.0.0",
+		"title": "API DRr"
+	},
+	"host": "",
+	"basePath": "/api",
+	"tags": [
+		{
+			"name": "getLastExecution",
+			"description": "Get the data related to the last execution from all banks"
+		},
+		{
+			"name": "executeReportForEveryBank",
+			"description": "Execute a chaincode already installed on every bank node"
+		},
+		{
+			"name": "getInputsFromBank",
+			"description": "Get the input data from the bank"
+		},
+		{
+			"name": "getCode",
+			"description": "Get the code of the smart-contract"
+		}
+	],
+	"schemes": [
+		"http"
+	],
+	"paths": {
+		"/getLastExecution": {
+			"post": {
+				"summary": "Get Last Execution",
+				"description": "Get the data related to the last execution from all banks",
+				"parameters":[
+					{   "in": "header",
+						"name": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6ImFkbWluQGRyci5jb20iLCJuYW1lIjoiQWRtaW4iLCJwYXNzd29yZCI6IiQyYiQxMCRGY2t3YVNTdG5DVy8xdUZ6Vko3N3VldFM2VFZydmdINVZkYXBnNGZ0RjB5aTFhYWYuZWFZZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTU0MDgwODc1OX0.hIOmRznxUC5dBPlxVi_0Un6EnAoIq55Q2d5puWpQ8OM"
+					  },
+					{
+						"in":"body",
+						"name": "body",
+						"schema":{
+							"type":"object",
+							"properties":{
+								"chaincodeId": { "type" : "string" }
+							}
+						},
+						"required": true
+					}
+				],
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Successful execution"
+					},
+					"405": {
+						"description": "Invalid inputs"
+					}
+				}
+			}
+		},
+		"/executeReport": {
+			"post": {
+				"summary": "Execute Report",
+				"description": "Execute a chaincode already installed for a firm",
+				"parameters":[
+					{   "in": "header",
+						"name": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6ImFkbWluQGRyci5jb20iLCJuYW1lIjoiQWRtaW4iLCJwYXNzd29yZCI6IiQyYiQxMCRGY2t3YVNTdG5DVy8xdUZ6Vko3N3VldFM2VFZydmdINVZkYXBnNGZ0RjB5aTFhYWYuZWFZZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTU0MDgwODc1OX0.hIOmRznxUC5dBPlxVi_0Un6EnAoIq55Q2d5puWpQ8OM"
+					  },
+					{
+						"in":"body",
+						"name": "body",
+						"schema":{
+							"type":"object",
+							"properties":{
+								"firmCode": { "type" : "string" },
+								"obligationName": { "type" : "string" },
+								"dateOfInput": { "type" : "string"},
+								"method": { "type" : "string"}
+							}
+						},
+						"required": true
+					}
+				],
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Successful execution"
+					},
+					"405": {
+						"description": "Invalid inputs"
+					}
+				}
+			}
+		},
+		"/executeReportForEveryBank": {
+			"post": {
+				"summary": "Execute Report For Every Banks",
+				"description": "Execute a chaincode already installed on every bank node",
+				"parameters":[
+					{   "in": "header",
+						"name": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6ImFkbWluQGRyci5jb20iLCJuYW1lIjoiQWRtaW4iLCJwYXNzd29yZCI6IiQyYiQxMCRGY2t3YVNTdG5DVy8xdUZ6Vko3N3VldFM2VFZydmdINVZkYXBnNGZ0RjB5aTFhYWYuZWFZZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTU0MDgwODc1OX0.hIOmRznxUC5dBPlxVi_0Un6EnAoIq55Q2d5puWpQ8OM"
+					  },
+					{
+						"in":"body",
+						"name": "body",
+						"schema":{
+							"type":"object",
+							"properties":{
+								"chaincodeId": { "type" : "string" },
+								"date": { "type" : "string"},
+								"method": { "type" : "string"}
+							}
+						},
+						"required": true
+					}
+				],
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Successful execution"
+					},
+					"405": {
+						"description": "Invalid inputs"
+					}
+				}
+			}
+		},
+		"/getInputsFromBank/": {
+			"post": {
+				"summary": "Get Inputs From Bank",
+				"description": "Get the input data from the bank",
+				"produces": [
+					"application/json"
+				],
+				"parameters":[
+					{   "in": "header",
+						"name": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6ImFkbWluQGRyci5jb20iLCJuYW1lIjoiQWRtaW4iLCJwYXNzd29yZCI6IiQyYiQxMCRGY2t3YVNTdG5DVy8xdUZ6Vko3N3VldFM2VFZydmdINVZkYXBnNGZ0RjB5aTFhYWYuZWFZZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTU0MDgwODc1OX0.hIOmRznxUC5dBPlxVi_0Un6EnAoIq55Q2d5puWpQ8OM"
+					  },
+					{
+						"in":"body",
+						"name": "body",
+						"schema":{
+							"type":"object",
+							"properties":{
+								"bankCode": { "type" : "string" },
+								"method": { "type" : "string"},
+								"date": { "type" : "string"},
+								"inputHash": { "type" : "string"}
+							}
+						},
+						"required": true
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful execution"
+					},
+					"405": {
+						"description": "Invalid inputs"
+					}
+				}
+			}
+		},
+		"/getCode/{chaincodeName}": {
+			"get": {
+				"summary": "Get code of the smart contract",
+				"description": "Get code of the smart contract",
+				"parameters":[
+					{   "in": "header",
+						"name": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6ImFkbWluQGRyci5jb20iLCJuYW1lIjoiQWRtaW4iLCJwYXNzd29yZCI6IiQyYiQxMCRGY2t3YVNTdG5DVy8xdUZ6Vko3N3VldFM2VFZydmdINVZkYXBnNGZ0RjB5aTFhYWYuZWFZZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTU0MDgwODc1OX0.hIOmRznxUC5dBPlxVi_0Un6EnAoIq55Q2d5puWpQ8OM"
+					  },
+					{
+						"in":"path",
+						"name": "chaincodeName",
+						"schema":{
+							"type":"string"
+						},
+						"required": true
+					}
+				],
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Successful execution"
+					},
+					"405": {
+						"description": "Invalid inputs"
+					}
+				}
+			}
+		},
+		"/onboarding/setup/": {
+			"post": {
+				"summary": "Configure a new node",
+				"description": "Configure a new node",
+				"parameters":[
+					{   "in": "header",
+						"name": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6ImFkbWluQGRyci5jb20iLCJuYW1lIjoiQWRtaW4iLCJwYXNzd29yZCI6IiQyYiQxMCRGY2t3YVNTdG5DVy8xdUZ6Vko3N3VldFM2VFZydmdINVZkYXBnNGZ0RjB5aTFhYWYuZWFZZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTU0MDgwODc1OX0.hIOmRznxUC5dBPlxVi_0Un6EnAoIq55Q2d5puWpQ8OM"
+					  },
+					{
+						"in":"body",
+						"name": "body",
+						"schema":{
+							"type":"object",
+							"properties":{
+								"firmIp": { "type" : "string" },
+								"firmName": { "type" : "string" }
+							}
+						},
+						"required": true
+					}
+				],
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Successful execution"
+					},
+					"405": {
+						"description": "Invalid inputs"
+					}
+				}
+			}
+		},
+		"/onboarding/progress/{token}": {
+			"get": {
+				"summary": "Get the progress of the onboarding process",
+				"description": "Get the progress of the onboarding process",
+				"parameters":[
+					{   "in": "header",
+						"name": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJlbWFpbCI6ImFkbWluQGRyci5jb20iLCJuYW1lIjoiQWRtaW4iLCJwYXNzd29yZCI6IiQyYiQxMCRGY2t3YVNTdG5DVy8xdUZ6Vko3N3VldFM2VFZydmdINVZkYXBnNGZ0RjB5aTFhYWYuZWFZZSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTU0MDgwODc1OX0.hIOmRznxUC5dBPlxVi_0Un6EnAoIq55Q2d5puWpQ8OM"
+					  },
+					{
+						"in":"path",
+						"name": "token",
+						"schema":{
+							"type":"string"
+						},
+						"required": true
+					}
+				],
+				"produces": [
+					"application/json"
+				],
+				"responses": {
+					"200": {
+						"description": "Successful execution"
+					},
+					"405": {
+						"description": "Invalid inputs"
+					}
+				}
+			}
+		}
+	},
+	"externalDocs": {
+		"description": "Find out more about Swagger",
+		"url": "http://swagger.io"
+	}
+}
